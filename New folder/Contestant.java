@@ -47,4 +47,13 @@ public class Contestant {
     public boolean canCompete(String t, int maxAge) {
         return canCompete(t) && this.age <= maxAge;
     }
+
+    public boolean canCompete(int minAge) {
+        return this.age >= minAge;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + ", " + this.country + ", " + this.age;
+    }
 }
