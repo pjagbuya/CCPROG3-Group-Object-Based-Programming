@@ -45,7 +45,14 @@ public class Contestant {
     }
 
     public boolean canCompete(String t, int maxAge) {
-        return canCompete(t) && this.age <= maxAge;
+        int i;
+        boolean isTalent = false;
+        for(i = 0; i < 3; i++) {
+            if( this.talents[i].equals(t) ) {
+                isTalent = true;
+            }
+        }
+        return isTalent && this.age <= maxAge;
     }
 
     public boolean canCompete(int minAge) {
