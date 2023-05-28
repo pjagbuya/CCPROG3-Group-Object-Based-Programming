@@ -25,7 +25,10 @@ public class Pageant {
         contestants[0].addTalent(talent1);
         contestants[0].addTalent(talent2);
 
-        System.out.println("Can the first contestant compete in singing? " + contestants[0].canCompete(25));
+        if (contestants[0].canCompete("singing")){
+            System.out.println("Can the first contestant be qualiified to compete in singing? " + contestants[0].canCompete(25));
+        }
+
         
         sc.close();
     }

@@ -1,23 +1,24 @@
 public class Contestant {
+
     private String name;
     private String country;
     private String[] talents;
     private int age;
-    private int talentCount;
-    private static final MAX_TALENTS;
+
+    public Contestant(String n, String c, int a) {
+        this(n, c);
+        this.age = a;
+    }
 
     public Contestant(String n, String c) {
+        
         this.name = n;
         this.country = c;
         this.age = 18;
         this.talents = new String[3];
-        this.talentCount = 0;
+
     }
 
-    public Contestant(String n, String c, int a) {
-        this(n, c);
-        this.age = 18;
-    }
 
     public String getName() {
         return this.name;
@@ -28,32 +29,47 @@ public class Contestant {
     }
 
     public void addTalent(String t) {
-        if(this.talentCount != 3) {
-            talents[this.talentCount] = t;
-            this.talentCount++;
+        
+        int i = 0;
+        while (i < this.talents.length && this.talents[i] != null){
+            i++;
         }
+        
+        if (i < this.talents.length){
+            talents[i] = t;
+        }
+
     }
 
     public boolean canCompete(String t) {
+
         int i;
-        for(i = 0; i < 3; i++) {
-            if( this.talents[i].equals(t) ) {
+        for(i = 0; i < this.talents.length; i++) 
+        {
+            if( this.talents[i] != null && this.talents[i].equalsIgnoreCase(t) ) {
                 return true;
             }
         }
         return false;
+
     }
 
     public boolean canCompete(String t, int maxAge) {
+
         return canCompete(t) && this.age <= maxAge;
+
     }
 
     public boolean canCompete(int minAge) {
+
         return this.age >= minAge;
+
     }
 
     @Override
     public String toString() {
+
         return this.name + ", " + this.country + ", " + this.age;
+
     }
 }
